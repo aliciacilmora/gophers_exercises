@@ -9,6 +9,18 @@ A simple, web-based "Choose Your Own Adventure" story application built with Go.
 
 ## Installation 
 
+### Install Docker
+Create an Ubuntu EC2 Instance on AWS and run the below commands to install docker.
+```
+sudo apt update && sudo apt install -y docker.io
+```
+
+#### Start Docker and Grant Access
+```
+sudo apt update && sudo apt install -y docker.io
+```
+
+
 ```
 git clone --no-checkout https://github.com/aliciacilmora/gophers_exercises.git
 cd gophers_exercises/choose_your_own_adventure
