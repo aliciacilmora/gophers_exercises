@@ -1,23 +1,35 @@
-##########################
-# BASE IMAGE
-##########################
+#######################################
+# BASE IMAGE FOR BUILDING THE BINARY
+#######################################
 
-FROM ubuntu AS build 
+FROM golang:1.21-alpine AS build
 
-RUN apt-get update && apt-get install -y golang-go
+# Working directory for the application
+WORKDIR /app
 
-ENV GO111MODULE=off
+# Copy go.mod to leverage Docker caching
+COPY go.mod ./
+RUN go mod download
 
+# Copy the rest of the application code
 COPY . .
 
-RUN CGO_ENABLED=0 go build -o app . 
+# Build the Go binary
+RUN go build -o /app/bin/cyoaweb ./cmd/cyoaweb
 
-###############################################
-# HERE STARTS THE MAGIC OF MULTI STAGE BUILD
-###############################################
+
+###########################################
+# MULTISTAGE BUILD FOR THE GO APPLICATION
+###########################################
 
 FROM scratch
 
-COPY --from=build /app /app
+# Copy the compiled binary
+COPY --from=build /app/bin/cyoaweb /bin/cyoaweb
 
-ENTRYPOINT [ "/app" ]
+# Copy the story JSON file
+COPY --from=build /app/gophers.json /app/gophers.json
+
+# Set the working directory and entry point
+WORKDIR /app
+CMD ["/bin/cyoaweb"]
