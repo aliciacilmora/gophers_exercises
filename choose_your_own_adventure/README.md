@@ -1,4 +1,4 @@
-[![Completed](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](http://20.118.227.150:3000/story/) [![demo: ->](https://img.shields.io/badge/demo-%E2%86%92-blue.svg?style=for-the-badge)](http://20.118.227.150:3000/story/)
+[![Completed](https://img.shields.io/badge/project%20status-completed-green.svg?style=for-the-badge)](http://20.118.227.150:3000/story/) [![demo: ->](https://img.shields.io/badge/demo-%E2%86%92-blue.svg?style=for-the-badge)](http://20.118.227.150:3000/story/)
 
 # Choose Your Own Adventure (CYOA)
 
